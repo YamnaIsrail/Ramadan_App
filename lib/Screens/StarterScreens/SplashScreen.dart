@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ramadan_app/Screens/StartedScreens/SplashScreen2.dart';
+import 'package:ramadan_app/Screens/StarterScreens/SplashScreen2.dart';
 import 'package:ramadan_app/widgets/Colors.dart';
 
 
