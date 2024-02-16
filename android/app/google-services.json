@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "450704756196",
+    "project_id": "ramadanapp-2457e",
+    "storage_bucket": "ramadanapp-2457e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450704756196:android:2bb813201c6c36d780cbf1",
+        "android_client_info": {
+          "package_name": "com.yum.ramadanapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlnNmA1eOTssQ9ZigvGYw59ln7ZJmrwXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
