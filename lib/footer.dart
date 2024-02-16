@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class myFooter extends StatefulWidget {
@@ -18,16 +20,20 @@ class _myFooterState extends State<myFooter> {
           child: Icon(Icons.home),
         ),
         FloatingActionButton(
+          onPressed: () {
+            // Add your onPressed functionality here
+          },
+          child: Icon(Icons.my_library_books_outlined),
+        ),
+
+        FloatingActionButton(
           onPressed: () {},
           child: Icon(Icons.notifications_active),
         ),
+
         FloatingActionButton(
           onPressed: () {},
-          child: Icon(Icons.person),
-        ),
-        FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.person),
+          child: Icon(Icons.mosque_sharp),
         ),
         FloatingActionButton(
           onPressed: () {},

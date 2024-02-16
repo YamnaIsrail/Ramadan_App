@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ramadan_app/Screens/Home_Screen/Home_screen_components/DailySupplication.dart';
+import 'package:ramadan_app/Screens/Quran/Quran_screen.dart';
+import 'package:ramadan_app/Screens/Quran/fetch_api.dart';
+import 'package:ramadan_app/Screens/adhan.dart';
+import 'package:ramadan_app/Screens/PrayerTimings/prayer_timings.dart';
 import 'package:ramadan_app/footer.dart';
+import 'package:ramadan_app/notification_services.dart';
 import 'package:ramadan_app/widgets/Colors.dart';
-
 import 'Home_screen_components/card.dart';
 import 'Home_screen_components/greetings.dart';
 import 'Home_screen_components/icon_cards.dart';
@@ -16,6 +21,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+NotificationServices notificationServices= NotificationServices();
+
+
+  void initState(){
+    super.initState();
+    notificationServices.requestNotificationPermission();
+    notificationServices.getDeviceToken().then((value){
+      print("Device token : ${value}");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                            ],
                          ),
                          Text(
-                           "Prayer Timings",
+                           "Daily Remainders",
                            style: TextStyle(
                              fontWeight: FontWeight.bold,
                              fontSize: 18
@@ -68,25 +85,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 SizedBox(height: 10,),
+
+                DailyDuasCard(
+                  duaTitle: 'Dua for a Blessed Day',
+                  duaText: 'O Allah, bless this day and guide me in my actions.',
+                ),
+                SizedBox(height: 10,),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+
                     IconCards(
                       myicon: Icons.timer_outlined,
                       title: "Prayer Time",
+                      fn: () => PrayerTimesPage(),
                     ),
 
                     IconCards(
                       myicon: Icons.my_library_books_outlined,
                       title: "Al Quran",
+                      fn: () => QuranApi(),
                     ),
 
                     IconCards(
                       myicon: Icons.mosque,
-                      title: "Masjid",
+                      title: "Daily Duas",
+                      fn: () => QuranApi(),
                     ),
                   ],
-                )
+                ),
+
+
               ],
             ),
           ),

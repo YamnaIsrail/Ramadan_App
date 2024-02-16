@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ramadan_app/Screens/PrayerTimings/prayer_timings.dart';
 
 class IconCards extends StatefulWidget {
   IconData myicon;
   String title;
+  Widget Function() fn;
+
    IconCards({
     required this.title,
-     required this.myicon});
+     required this.myicon,
+     required this.fn
+
+   });
 
   @override
   State<IconCards> createState() => _IconCardsState();
@@ -23,10 +29,17 @@ class _IconCardsState extends State<IconCards> {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-            Icon(
-              widget.myicon,
+            IconButton(
+              icon: Icon(widget.myicon),
               color: Colors.white,
-              size: 20,
+
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder)=>widget.fn())
+                );
+              },
             ),
             Text("${widget.title}")
           ],
