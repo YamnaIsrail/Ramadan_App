@@ -7,81 +7,77 @@ class SplashScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Container(
-            child: Column(
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: Container(
-                      color: primaryColor,
-                      width: 500,
-                      height: double.infinity,
-                      child: Image.asset(
-                        'assets/images/rail.png',
-                        //fit: BoxFit.cover,
-                      ),
-                    ),),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    color: secondaryColor,
-                    child: Column(
-                      children: [
-                        Positioned(
-                          top: 50.0,
-                          // left: 16.0,
-                          // right: 16.0,
-                          child: Text(
-                            'Happy Ramadan Kareem',
-                             style: GoogleFonts.abhayaLibre(
-                            fontSize: 35,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold,
+      backgroundColor: Colors.brown,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Container(
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex: 2,
+                        child: Container(
+                          color: primaryColor,
+                          width: 500,
+                          height: double.infinity,
+                          child: Image.asset(
+                            'assets/images/rail.png',
+                            //fit: BoxFit.cover,
                           ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-
-                        // Text on Bottom
-                        Positioned(
-                          top: 100.0,
-                          left: 16.0,
-                          right: 16.0,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-                            child: Text(
-                              "Ramadan 2024, Hijri 1445 is expected to start "
-                                  "from 10 March 2024 in the most of the countries",
-                              style: TextStyle(
-                                color: primaryColor,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                        ),),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        width: double.infinity,
+                        color: secondaryColor,
+                        child: Column(
+                          children: [
+                            Text(
+                              'Happy Ramadan Kareem',
+                               style: GoogleFonts.abhayaLibre(
+                              fontSize: 35,
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
                               textAlign: TextAlign.center,
                             ),
-                          ),
+
+                            // Text on Bottom
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                              child: Text(
+                                "Ramadan 2024, Hijri 1445 is expected to start "
+                                    "from 10 March 2024 in the most of the countries",
+                                style: TextStyle(
+                                  color: primaryColor,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+
+                          ],
                         ),
-
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
 
+              ),
+            ],
           ),
-        ],
+        ),
       ),
 
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 45.0),
         child: FractionallySizedBox(
           widthFactor: 0.75,
-          child: ElevatedButton(
+          child: ElevatedButton.icon(
             onPressed: () {
               Navigator.push(
                   context,
@@ -92,23 +88,19 @@ class SplashScreen2 extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               primary: primaryColor,
               padding: EdgeInsets.all(10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
+              // shape: RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.circular(10.0),
+              // ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Explore",
-                    style: TextStyle(
-                      color: secondaryColor,
-                      fontSize: 16,
-                     // fontWeight: FontWeight.bold
-                    ),
-                    textAlign: TextAlign.center),
-                Icon(Icons.arrow_forward),
-              ],
-            ),
+            label: Text("Explore",
+                style: TextStyle(
+                  color: secondaryColor,
+                  fontSize: 16,
+                  // fontWeight: FontWeight.bold
+                ),
+                textAlign: TextAlign.center),
+            icon: Icon(Icons.arrow_forward),
+
           ),
         ),
       ),
