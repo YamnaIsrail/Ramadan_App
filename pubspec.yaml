@@ -50,6 +50,10 @@ dependencies:
   firebase_core: ^2.25.4
   app_settings: ^5.1.1
 
+  flutter_alarm_clock: ^0.1.1
+
+
+
 
 dev_dependencies:
   flutter_test:
