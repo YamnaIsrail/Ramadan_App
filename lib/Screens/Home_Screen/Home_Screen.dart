@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ramadan_app/Screens/Home_Screen/Home_screen_components/DailySupplication.dart';
+import 'package:ramadan_app/Screens/Home_Screen/Home_screen_components/sehar_iftar_card.dart';
 import 'package:ramadan_app/Screens/Quran/Quran_screen.dart';
 import 'package:ramadan_app/Screens/Quran/fetch_api.dart';
 import 'package:ramadan_app/Screens/adhan.dart';
@@ -7,11 +8,9 @@ import 'package:ramadan_app/Screens/PrayerTimings/prayer_timings.dart';
 import 'package:ramadan_app/footer.dart';
 import 'package:ramadan_app/notification_services.dart';
 import 'package:ramadan_app/widgets/Colors.dart';
-import 'Home_screen_components/card.dart';
 import 'Home_screen_components/greetings.dart';
 import 'Home_screen_components/icon_cards.dart';
-import 'Home_screen_components/prayer_timings.dart';
-import 'Home_screen_components/top_bar.dart';
+import 'Home_screen_components/remaining_activity.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -47,7 +46,7 @@ NotificationServices notificationServices= NotificationServices();
               children: [
                 greetings(),
                 SizedBox(height: 10),
-                myTopBar(),
+                RemainingActivity(),
                 SizedBox(height: 10),
                 Row(
                   children: [
@@ -77,7 +76,22 @@ NotificationServices notificationServices= NotificationServices();
                              fontSize: 18
                            ),
                          ),
-                         PrayerTimes()
+                         Container(
+
+                           color: Color(0xffd7b889),
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                             children: [
+                               Text('Supplication of the day'),
+                               Text('Fajar timings Alarm'),
+                               Text('Sehar time'),
+                               //Text('data'),
+
+
+
+                             ],
+                           ),
+                         ),
                        ],
                      ),
                    )
