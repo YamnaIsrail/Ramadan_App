@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:ramadan_app/Screens/alarm/alarm.dart';
 
 class myFooter extends StatefulWidget {
   const myFooter({super.key});
@@ -27,7 +28,9 @@ class _myFooterState extends State<myFooter> {
         ),
 
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (builder)=> alarm()));
+          },
           child: Icon(Icons.notifications_active),
         ),
 
