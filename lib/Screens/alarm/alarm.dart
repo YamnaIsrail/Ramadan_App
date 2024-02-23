@@ -121,7 +121,8 @@ class _alarmState extends State<alarm> {
                                     child: Text("Timer is set",
                                         style: TextStyle(
                                           color: Colors.white,
-                                            fontSize: 40, fontWeight: FontWeight.bold)),
+                            fontSize: 22, fontWeight: FontWeight.bold)),
+
                                   ),
                                 )
                               ],

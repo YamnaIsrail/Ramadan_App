@@ -1,40 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ramadan_app/Screens/PrayerTimings/prayer_time_service.dart';
 import 'package:ramadan_app/Screens/alarm/sehar_iftar_alarm.dart';
 import 'package:ramadan_app/widgets/Colors.dart';
-
-String getPrayerName(DateTime time) {
-  if (time == prayerTimesService.fajar) {
-    return 'Fajr';
-  } else if (time == prayerTimesService.sunrise) {
-    return 'Sunrise';
-  } else if (time == prayerTimesService.dhuhr) {
-    return 'Dhuhr';
-  } else if (time == prayerTimesService.asar) {
-    return 'Asar';
-  } else if (time == prayerTimesService.maghrib) {
-    return 'Maghrib';
-  } else if (time == prayerTimesService.isha) {
-    return 'Isha';
-  }
-  return '';
-}
-
-
-Future<DateTime> getNextPrayerTime() async {
-  await prayerTimesService.fetchPrayerTimes();
-  DateTime now = DateTime.now();
-  List<DateTime> prayerTimes = [prayerTimesService.fajar, prayerTimesService.sunrise, prayerTimesService.dhuhr, prayerTimesService.asar, prayerTimesService.maghrib, prayerTimesService.isha];
-  prayerTimes.sort((a, b) => a.compareTo(b));
-
-  for (DateTime prayerTime in prayerTimes) {
-    if (prayerTime.isAfter(now)) {
-      return prayerTime;
-    }
-  }
-
-  // If all prayer times are in the past, return the first prayer time of the next day
-  return prayerTimes.first.add(Duration(days: 1));
-}
 
 class RemainingActivity extends StatefulWidget {
   const RemainingActivity({Key? key}) : super(key: key);
@@ -119,4 +86,45 @@ class _RemainingActivityState extends State<RemainingActivity> {
 
 
 
+}
+
+
+
+
+final prayerTimesService = PrayerTimesService();
+
+
+Future<DateTime> getNextPrayerTime() async{
+  await prayerTimesService.fetchPrayerTimes();
+
+  DateTime now = DateTime.now();
+  List<DateTime> prayerTimes = [prayerTimesService.fajar, prayerTimesService.sunrise, prayerTimesService.dhuhr, prayerTimesService.asar, prayerTimesService.maghrib, prayerTimesService.isha];
+  prayerTimes.sort((a, b) => a.compareTo(b));
+
+  for (DateTime prayerTime in prayerTimes) {
+    if (prayerTime.isAfter(now)) {
+      return prayerTime;
+    }
+  }
+
+  // If all prayer times are in the past, return the first prayer time of the next day
+  return prayerTimes.first.add(Duration(days: 1));
+}
+
+
+String getPrayerName(DateTime time) {
+  if (time == prayerTimesService.fajar) {
+    return 'Fajr';
+  } else if (time == prayerTimesService.sunrise) {
+    return 'Sunrise';
+  } else if (time == prayerTimesService.dhuhr) {
+    return 'Dhuhr';
+  } else if (time == prayerTimesService.asar) {
+    return 'Asar';
+  } else if (time == prayerTimesService.maghrib) {
+    return 'Maghrib';
+  } else if (time == prayerTimesService.isha) {
+    return 'Isha';
+  }
+  return '';
 }

@@ -15,13 +15,29 @@ class MyCard extends StatefulWidget {
 
 class _MyCardState extends State<MyCard> {
   bool switchValue = false;
+  late DateTime iftarTime;
+  late DateTime saharTime;
 
+
+  @override
+  void initState() {
+    super.initState();
+    initializePrayerTimes();
+  }
+
+  Future<void> initializePrayerTimes() async {
+    await prayerTimesService.fetchPrayerTimes();
+    setState(() {
+      iftarTime = prayerTimesService.maghrib;
+      saharTime = prayerTimesService.fajar.subtract(Duration(hours: 2));
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Card(
       color: primaryColor,
       child: Container(
-        // margin: EdgeInsets.all(10),
         padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: primaryColor,
@@ -33,19 +49,20 @@ class _MyCardState extends State<MyCard> {
               children: [
                 Icon(Icons.wb_twilight, size: 30),
                 SizedBox(width: 10),
-                Switch.adaptive(
+                Switch(
                   value: switchValue,
-
-                  onChanged: (bool value) {
+                  onChanged: (bool value) async {
                     setState(() {
                       switchValue = value;
                     });
                     print("alarm print here");
 
-                    setState(() {
+                    if (value) {
                       widget.title == "Sahar"? saharAlarm() : iftarAlarm() ; // Call your function here
 
-                    });
+                    } else {
+                      FlutterAlarmClock.showAlarms();
+                    }
                   },
                 ),
               ],

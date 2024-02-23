@@ -77,7 +77,7 @@ class SplashScreen2 extends StatelessWidget {
         padding: const EdgeInsets.only(right: 45.0),
         child: FractionallySizedBox(
           widthFactor: 0.75,
-          child: ElevatedButton.icon(
+          child: ElevatedButton(
             onPressed: () {
               Navigator.push(
                   context,
@@ -86,20 +86,19 @@ class SplashScreen2 extends StatelessWidget {
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: primaryColor,
+              backgroundColor: primaryColor,
               padding: EdgeInsets.all(10),
               // shape: RoundedRectangleBorder(
               //   borderRadius: BorderRadius.circular(10.0),
               // ),
             ),
-            label: Text("Explore",
+            child: Text("Explore",
                 style: TextStyle(
                   color: secondaryColor,
                   fontSize: 16,
                   // fontWeight: FontWeight.bold
                 ),
                 textAlign: TextAlign.center),
-            icon: Icon(Icons.arrow_forward),
 
           ),
         ),
